@@ -62,6 +62,55 @@ impl FromStr for Nuc {
     }
 }
 
+struct PackedDna {
+    DNA: Vec<u8>,
+}
+
+impl FromStr for PackedDna {
+    type Err = ParseNucError<String>;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        let upper = s.to_ascii_uppercase();
+        let v: Vec<u8> = Vec::new();
+        for c in upper.chars() {
+            match c {
+                'A' => v.push(0),
+                'C' => v.push(1),
+                'G' => v.push(2),
+                'T' => v.push(3),
+                _ => Err(ParseNucError(upper)),
+            }
+        }
+        Ok(v)
+    }
+}
+
+impl PackedDna {
+    fn from_iterator(&self, iter: Vec<Nuc>) -> () {
+        let v: Vec<u8> = Vec::new();
+        for c in iter {
+            match c {
+                Nuc::A => v.push(0),
+                Nuc::C => v.push(1),
+                Nuc::G => v.push(2),
+                Nuc::T => v.push(3),
+            }
+        }
+        self.DNA = v
+    }
+}
+
+impl PackedDna {
+    fn get(&self, idx: usize) -> Nuc {
+        match self.DNA[idx] {
+            0 => Nuc::A,
+            1 => Nuc::C,
+            2 => Nuc::G,
+            3 => Nuc::T, 
+        }
+    }
+}
+
 #[cfg(test)]
 mod tests {
     // TODO: fill in tests
