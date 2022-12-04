@@ -65,14 +65,77 @@ impl FromStr for Nuc {
 #[cfg(test)]
 mod tests {
     // TODO: fill in tests
+    use super::*;
 
     #[test]
-    fn tryfrom_char() {
-        assert!(false);
+    fn tryfrom_char_A() {
+        let nucTryFromA = Nuc::try_from('A');
+        match nucTryFromA {
+            Ok(x) => assert_eq!(x, Nuc::A),
+            Err(e) => println!(" {e:?} error is returned"),
+        }
     }
 
     #[test]
-    fn fromstr() {
-        assert!(false);
+    fn tryfrom_char_C() {
+        let nucTryFromC = Nuc::try_from('C');
+        match nucTryFromC {
+            Ok(x) => assert_eq!(x, Nuc::C),
+            Err(e) => println!(" {e:?} error is returned"),
+        }
+    }
+
+    #[test]
+    fn tryfrom_char_G() {
+        let nucTryFromG = Nuc::try_from('G');
+        match nucTryFromG {
+            Ok(x) => assert_eq!(x, Nuc::G),
+            Err(e) => println!(" {e:?} error is returned"),
+        }
+    }
+
+    #[test]
+    fn tryfrom_char_T() {
+        let nucTryFromT = Nuc::try_from('T');
+        match nucTryFromT {
+            Ok(x) => assert_eq!(x, Nuc::T),
+            Err(e) => println!(" {e:?} error is returned"),
+        }
+    }
+
+    #[test]
+    fn fromstr_a() {
+        let nucFromStrA = Nuc::from_str("a");
+        match nucFromStrA {
+            Ok(x) => assert_eq!(x, Nuc::A),
+            Err(e) => println!(" {e:?} error is returned"),
+        }
+    }
+
+    #[test]
+    fn fromstr_c() {
+        let nucFromStrC = Nuc::from_str("c");
+        match nucFromStrC {
+            Ok(x) => assert_eq!(x, Nuc::C),
+            Err(e) => println!(" {e:?} error is returned"),
+        }
+    }
+
+    #[test]
+    fn fromstr_g() {
+        let nucFromStrG = Nuc::from_str("g");
+        match nucFromStrG {
+            Ok(x) => assert_eq!(x, Nuc::G),
+            Err(e) => println!(" {e:?} error is returned"),
+        }
+    }
+
+    #[test]
+    fn fromstr_t() {
+        let nucFromStrT = Nuc::from_str("t");
+        match nucFromStrT {
+            Ok(x) => assert_eq!(x, Nuc::T),
+            Err(e) => println!(" {e:?} error is returned"),
+        }
     }
 }
